@@ -1,0 +1,39 @@
+<?php require_once './templates/blocs/header.phtml'; ?>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <table class="table table-striped table-hover table-sm">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Code</th>
+                        <th>Nom</th>
+                        <th>Nom (Capitales)</th>
+                        <th>SLUG</th>
+                        <th>Soundex</th>
+                        <th>Soundex attendu</th>
+                        <th>E.mail</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($departments as $department) : ?>
+                    <tr class="<?=$department['classes']?>">
+                        <td class="<?=$department['col_classes']['id']?>"><?=$department['id']?></td>
+                        <td class="<?=$department['col_classes']['code']?>"><?=$department['code']?></td>
+                        <td class="<?=$department['col_classes']['name']?>"><?=$department['name']?></td>
+                        <td class="<?=$department['col_classes']['uppercase_name']?>"><?=$department['uppercase_name']?></td>
+                        <td class="<?=$department['col_classes']['slug']?>"><?=$department['slug']?></td>
+                        <td class="<?=$department['col_classes']['soundex']?>"><?=$department['soundex']?></td>
+                        <td class=""><?=$department['soundex_preview']?></td>
+                        <td class="<?=$department['col_classes']['email']?>"><?=$department['email']?></td>
+                    </tr>
+                    <?php endforeach ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<?php require_once './templates/blocs/footer.phtml'; ?>
+
+
