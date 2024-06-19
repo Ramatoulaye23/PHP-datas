@@ -40,7 +40,7 @@ if(!filter_var($departments[email]))
     // SI ON A UNE ERREUR SUR L'EMAIL, METTRE LA CLASSE CSS DANGER SUR LA COLONNE DE L'EMAIL
 
 
-    if (!filter_var($departments[`email`], FILTER_VALIDATE_EMAIL)) return
+    if (!filter_var($departments[`email`], FILTER_VALIDATE_EMAIL)) return '';
         # code...
 
     // AJOUTER (OU PAS) UNE CLASSE CSS AU DÉPARTEMENT ACTUEL

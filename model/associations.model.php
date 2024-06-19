@@ -1,6 +1,7 @@
 <?php
 require_once './model/database.php';
 
+
 /**
  * Renvoie la liste de toutes les associations en BDD
  *

@@ -1,6 +1,9 @@
 <?php
 require_once './lib/strings.php';
 require_once './lib/soundex.php';
+const REGEX_MATCH_DEPARTMENT_CODE = '/^((0[1-9])|(1[0-9])|(2[AB1-9])|([3-8][0-9])|(9[0-5])|(97[1-8])|(98[46-9]))$/i';
+
+const REGEX_MATCH_DEPARTMENT_NAME ="/^[ôèéàëêâäïçùêa-z]([ôèéàëêâäïçùêa-z]|[- ']){1,}$/i";
 
 /**
  * Contient des fonction de validation de données
@@ -40,7 +43,8 @@ function validateDepartment(array $department) : int {
  * @return boolean true si la chaine est un code de département valide
  */
 function isValidDepartmentCode(string $code) : bool {
-    return false;
+
+    return preg_match(REGEX_MATCH_DEPARTMENT_CODE , $code);
 }
 
 /**
@@ -50,6 +54,6 @@ function isValidDepartmentCode(string $code) : bool {
  * @return boolean true si la chaine est un code de nom valide
  */
 function isValidDepartmentName(string $name) : bool {
-    return false;
+ return preg_match(REGEX_MATCH_DEPARTMENT_NAME , $name);// preg_match donne 1 si c'est vrai 0 si c'est faux et false s il ya une erreur sur le regex
 }
 
