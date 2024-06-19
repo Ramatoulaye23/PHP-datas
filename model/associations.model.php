@@ -1,7 +1,6 @@
 <?php
 require_once './model/database.php';
 
-
 /**
  * Renvoie la liste de toutes les associations en BDD
  *
@@ -38,48 +37,39 @@ function getAssociationByIdEx(int $id_ex) : array|false {
  */
 function addAssociation(string $id_ex, 
                         string $name, 
-                        string $objet, 
+                        string $object, 
                         string $address1,
                         string $address2,
                         string $address3,
                         string $zip,
                         string $city) : bool {
 
+    d("Demande d'ajout de $name");
+    // CONNEXION À LA DB
+    $database = dbConnect();
 
-d('Demande d\'ajout de '.$name);
-d('Demande d\'ajout de '.$objet);
-d('Demande d\'ajout de '.$address1);
-d('Demande d\'ajout de '.$address2);
-d('Demande d\'ajout de '.$address3);
+    // ECRITURE DU SQL
+    $SQL = "INSERT INTO `associations` 
+                    (`id_ex`, `name`, `object`, `address1`, `address2`, `address3`, `zip`, `city`) 
+            VALUES  (:id_ex, :name, :object, :address1, :address2, :address3, :zip, :city)";
+  
+    // PRÉPARATION DE LA REQUÊTE SQL
+    $query = $database->prepare($SQL);
 
-
-   // CONNEXION À LA DB
-
-$database = dbConnect();
-
-// ECRITURE DU SQL
-
-$SQL = "INSERT INTO `associations`
-           (`id_ex`,`name`,`city`,`zip`,`address1`,`address2`,`address3`,`objet`)
-    values (:id_ex, :name, :city, :zip, :address1, :address2, :address3, :objet)";
-// PRÉPARATION DE LA REQUÊTE SQL
-$query = $database ->prepare($SQL);
-// EXÉCUTION DE LA REQUÊTE
-$success  = $query -> execute([
-        ':id_ex'=>$id_ex,
-        ':zip'=>$zip,
-        ':name'=>$name,
-        ':city'=>$city,
-        ':address1'=>$address1,
-        ':address2'=>$address2,
-        ':address3'=>$address3,
-        ':objet'=>$objet,
-
-
-]);
-return $success;
-// RENVOIE TRUE SI TOUT S'EST BIEN PASSÉ
-
+    // EXÉCUTION DE LA REQUÊTE
+    $success = $query->execute([
+        ':id_ex'    => $id_ex,
+        ':name'     => $name,
+        ':object'   => $object,
+        ':address1' => $address1,
+        ':address2' => $address2,
+        ':address3' => $address3,
+        ':zip'      => $zip,
+        ':city'     => $city,
+    ]);
+     
+    // RENVOIE TRUE SI TOUT S'EST BIEN PASSÉ
+    return $success;
 }
 
 

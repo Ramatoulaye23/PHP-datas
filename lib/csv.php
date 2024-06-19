@@ -7,27 +7,25 @@
  * @return array Tableau contenant les données du fichier
  */
 function readCSVFile(string $filename) : array {
-    // CREER UN TABLEAU VIDE
-    $datas = [];
-// sanity check
-if (!file_exists($filename)) return [];
 
+    // CRÉER UN TABLEAU DE DATAS VIDE
+    $datas = [];
+
+    // SANITY CHECK
+    if (!file_exists($filename)) return [];
 
     // OUVRE LE FICHIER EN LECTURE SEULE
-    $filename = './_datas/rna_import_20230602_dpt_01.csv';
     $handle = fopen($filename, 'r');
 
+    // CHARGE LES DONNÉES DU FICHIER CSV DANS UNe BOUCLE
+    while (($data = fgetcsv($handle, 1000, ";")) !== FALSE) {
 
-    // CHARGE LES DONNÉES DU FICHIER CSV DANS UNE BOUCLE
-    while (($data = fgetcsv ($handle,1000,";"))  !== false) {
-
-
-      // ajouter les données de la ligne au tableau donnée
-      $datas[] = $data;
+        // AJOUTER LES DONNÉES DE LA LIGNE AUX TABLEAU DE DONNÉES COMPLET
+        $datas[] = $data;
     }
     // FERMER LE FICHIER
-
     fclose($handle);
+ 
     // RENVOIE LES DONNÉES FINALES
     return $datas;
 }

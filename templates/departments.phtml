@@ -18,15 +18,15 @@
                 </thead>
                 <tbody>
                     <?php foreach ($departments as $department) : ?>
-                    <tr class="<?=$department['classes']?>">
-                        <td class="<?=$department['col_classes']['id']?>"><?=$department['id']?></td>
-                        <td class="<?=$department['col_classes']['code']?>"><?=$department['code']?></td>
-                        <td class="<?=$department['col_classes']['name']?>"><?=$department['name']?></td>
-                        <td class="<?=$department['col_classes']['uppercase_name']?>"><?=$department['uppercase_name']?></td>
-                        <td class="<?=$department['col_classes']['slug']?>"><?=$department['slug']?></td>
-                        <td class="<?=$department['col_classes']['soundex']?>"><?=$department['soundex']?></td>
-                        <td class=""><?=$department['soundex_preview']?></td>
-                        <td class="<?=$department['col_classes']['email']?>"><?=$department['email']?></td>
+                    <tr class="<?=$department['css-class']?>">
+                        <td class=""><?=$department['id']?></td>
+                        <td class="<?=$department['col-classes']['code']?>"><?=$department['code']?></td>
+                        <td class="<?=$department['col-classes']['name']?>"><?=$department['name']?></td>
+                        <td class="<?=$department['col-classes']['uppercase']?>"><?=$department['uppercase_name']?></td>
+                        <td class="<?=$department['col-classes']['slug']?>"><?=$department['slug']?></td>
+                        <td class="<?=$department['col-classes']['soundex']?>"><?=$department['soundex']?></td>
+                        <td class=""><?=$department['expected_soundex']?></td>
+                        <td class="<?=$department['col-classes']['email']?>"><?=$department['email']?></td>
                     </tr>
                     <?php endforeach ?>
                 </tbody>

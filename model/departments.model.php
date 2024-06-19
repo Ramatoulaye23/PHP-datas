@@ -9,26 +9,20 @@ require_once './model/database.php';
 function getAllDepartments() : array {
 
     // CONNEXION À LA DB
-    $databse = dbConnect();
-
     $database = dbConnect();
-    // ECRITURE DU SQL
-    $SQL = "
-       SELECT departement_id AS id,
-            departement_code AS code,
-            departement_nom AS name,
             departement_nom_uppercase AS uppercase_name ,
-            departement_slug AS slug,
-            departement_nom_soundex AS soundex,
-            departement_email AS email
 
-        FROM departement; 
-
-
-    ";
+    // ECRITURE DU SQL
+    $SQL = "SELECT  `departement_id` AS `id`, 
+                    `departement_code` AS `code`, 
+                    `departement_nom`  AS `name`, 
+                    `departement_nom_uppercase` AS `uppercase_name`, 
+                    `departement_slug` AS `slug`, 
+                    `departement_nom_soundex` AS `soundex`, 
+                    `departement_email` AS `email` FROM `departements`;";
 
     // PRÉPARATION DE LA REQUÊTE SQL
-    $query = $databse->prepare($SQL);
+    $query = $database->prepare($SQL);
 
     // EXÉCUTION DE LA REQUÊTE
     $query->execute();
@@ -37,19 +31,8 @@ function getAllDepartments() : array {
     $datas = $query->fetchAll();
 
     // RENVOIE TRUE SI TOUT S'EST BIEN PASSÉ
-    return [];
     return $datas;
 }
-
-
-
-
-
-
-    // RÉCUPÈRE LES DATAS
-
-    // RENVOIE TRUE SI TOUT S'EST BIEN PASSÉ
- 
 
 /**
  * Renvoie le département spécifiée
