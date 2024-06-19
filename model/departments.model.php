@@ -10,7 +10,6 @@ function getAllDepartments() : array {
 
     // CONNEXION À LA DB
     $database = dbConnect();
-            departement_nom_uppercase AS uppercase_name ,
 
     // ECRITURE DU SQL
     $SQL = "SELECT  `departement_id` AS `id`, 
