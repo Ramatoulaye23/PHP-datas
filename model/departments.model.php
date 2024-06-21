@@ -18,13 +18,13 @@ function getAllDepartments() : array {
                     `departement_nom_uppercase` AS `uppercase_name`, 
                     `departement_slug` AS `slug`, 
                     `departement_nom_soundex` AS `soundex`, 
-                    `departement_email` AS `email` FROM `departements`;";
+                    `departement_email` AS `email` FROM `departements`";
 
     // PRÉPARATION DE LA REQUÊTE SQL
     $query = $database->prepare($SQL);
 
     // EXÉCUTION DE LA REQUÊTE
-    $query->execute();
+    // $query ->execute();
 
     // RÉCUPÈRE LES DATAS
     $datas = $query->fetchAll();
